@@ -1,12 +1,15 @@
 import os
+import glob
+import base64
 import imageio
 import pathlib
 import natsort
-import glob
-from tkinter import *
+import webbrowser
 import tkinter as tk
+from tkinter import *
+from PIL import Image
+from io import BytesIO
 from tkinter.filedialog import askdirectory
-
 
 def make_gif(image_directory: pathlib.Path, destin: pathlib.Path, frames_per_second: float, namin: str, **kwargs):
 
@@ -126,12 +129,71 @@ def gifAble(*args):
         except NameError:
             pass
 
+def tagbtn():
+    webbrowser.open("http://sahasramesh.com")
 #styling
 fam = 'rubik'
 n = 20
 textw = 17
 
 #images
+Image.open(BytesIO(base64.b64decode("""iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7
+MK6iAAAA2UlEQVRIS+2XTQ6CMBCFH0s4gS7adY8CSQ/kz1r0PizgKqy70COwq+mERkSiacxUEtvV8JL
+267zMlEyGxzoBOEy+OcKzZ2Tj6VcAGw7Swpk3AFsHrgHsI0E9pnZgGxlKuASO5nqyOlnN5sA6i6ssS7
+RtS1l3XYeqqigO1Zdse5uxtc+vqZQSxhiE6l+DlVLo+/4F/EkPBjdNA6017RuGAXmeUxyqB4PdBiEEi
+qKgTKcrVJ/D11nVbE2c/sec1qbi+s92ijG6zGvr8tMRxt/GDVQ75pZy49LRMe4kF3QT8XQY4gAAAABJ
+RU5ErkJggg==""")
+)).save('path.png', 'PNG')
+
+Image.open(BytesIO(base64.b64decode("""iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7
+MK6iAAAB6ElEQVRIS82WPU8CQRCGH046EqCmQXsaNWKjBYbaivg3jBYWWmthofFnCJVakmihjRK1olY
+ragIdHpi5ZMlx3u7tHUfCdpedfZ+Z2Y97M9iPMnAJHGiW3AOHwLeNZMYi6Ao4sojzh1wAZ6Y1JvA68A
+7YJBfGcIEt4DNsUif6CNRiVqkLfwO2g5Nh4GdgJyWoknkBdv2aQfArUE0ZquSegD314QfLnn4sCKpkN
+9Se+8G/wMqCwRPAEYYCnwOnC4Yq+WvgWIElk1RGvV6n3W5TKpXo9Xo6zYyAV4GvNKiNRoNWqzWVMsBX
+BXwH7M8LVpUqncFgQKFQYDIJbWZTwHO3OQjt9/sUi0VjLZHg4XBIrVaj0+mECgXbK5Xm8/nIBhrBAs3
+lcp5ItVr9B4/Z3plkrMGyqlKp0O12PYEk7Q0+mcY99letKi+XyzOn17a9scASrDmZnk7E6dXutbT61u
+AqpguDlcuEzenVkB8ELJbGyq6MRiOy2ey0UpvTqwGvxXoyHcfBdd3E7fUl4T2ZMqx9lcDH43HkPTUEe
+H7M/1sUtaT+yjYR8WHeXi2FEZBE0jR5wS7MmL6lMXsqyzRN34zJU4AoQy+/pKQ+TJ7izbiG3r8/SfyY
+56tMRz3O9RGLdGNwK03gBPixuVt/2uyhs6iaDrkAAAAASUVORK5CYII=""")
+)).save('filled.png', 'PNG')
+
+Image.open(BytesIO(base64.b64decode("""iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7
+MK6iAAACTElEQVRIS+2XMa/SUBTH/7XwKSD4+AIQnlEXHXSHhMWRhMBudHAQSP8N4OCgcYeQsPkWIuw
+6PBd9EQNfACXwKUqtadPbtPeVUix5Lq8Tvefc87899557fiiI+bRarbvpdPotgGd7pkwBPCf5K05I5Z
+ATyXcAXhzyk+xvSLai5uwV7nQ6JVVVfwA4uLgwAUVRzN1ud7/b7f4MtYcNkvwM4InfpqoqCoUCKpVK6
+IdMp1Msl0uYpinbv5N8KA9e+xqSlwAe+R2bzSYymUysbG82GwyHQ9n3K8nH/sGAMMlvAB4Ih3w+j1qt
+FktQdhqNRliv1/7hLySfigFP2N3TuTDYaa1Wq/8kKiZNJhMn/eIxTfNc7LknrOv6zrIs1XbK5XKo1+u
+JRMXk8XiM1WolXi2Sd+wXR5hkH8BrYdU07SSiIoiu6/5470m+FMKWsDQaDWSz2ZMKb7dbDAYDLyZJRS
+F5BsDJhV0y7Xb7pKIiWK/X80rNMIwzW/gTAKc4S6XS3jpNuprZbIb53Du7F7awl+ZT7628WP9e3won3
+crI+bep/iio4gbLaaa4SOPgyk1dIADy167MY3pv3JMo92jnynSbRICrTn2RSE3C4TGvLZL8I7pVEgCI
+AgKbwzRNS3lt0f7x30DATXkA8pIAgQQAdvgA9MWCvWN6tNx73dRHw57YHxn6RKkVi0WUy+XQw2y3vcV
+iEYa3AcgTkyOBPpVKXQkOi1s6Pj/LNM17RwG9X0TmsZgLcLgqyjf23xMXkT4IWgkJemEYxqt+v/87zu
+L+AkCKFrMb5tNUAAAAAElFTkSuQmCC""")
+)).save('empty.png', 'PNG')
+
+Image.open(BytesIO(base64.b64decode("""iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7
+MK6iAAABsklEQVRIS+2XO07DQBBAX7DvgX2EgDANlhIOQEkZRcoBEBQUUENBAeIAkZKSdEBPIpEGIiA
+3sDlHwkdjsZJjOWY2MYKCrRJ5Zt56du19rqAfq8AZsDsn5QbYA2JNyYoi6BzYV8SlQ06B46KcInAVeA
+I0k8tjvAEbwEvexXlF74C65V3OC38ENrMX88D3wFZJUFNmCITpmlnwAxCUDDXl+sC2+ZMGy5o+/xDUl
+F0za54GTwFHC55OpziOQxiGDIfSSdX4AFYk0oBPgCNVKtBoNOh2u0n4eDymWpVmqccFcGDAMhOrMZlM
+cF2XIAgYjUZWuXLDAvaAyDZzyXhPwNfAjk0h3/dptVpJShRFtNttm3SJ7QnYus21Wo1+X54OGAwG1Ov
+275p/sGqt/lu96Oa6KrCK3NaX0Opb2dWiNCpdMbMoAewv9MosAZy8MmVYedWS4MTH0sfiu9avPM+j2W
+wmM47jmE6no3oMAfEwN30syu9fEwGBlyl52S7MSN+fkT0zyzKlb0byDOA7oRe1UHtYprdy3K7bCn26h
+pWPfSUmXlW01W0+T0SRLgtspQccAq+aZ+sT1nOPs54tNbMAAAAASUVORK5CYII=""")
+)).save('info.png', 'PNG')
+
+Image.open(BytesIO(base64.b64decode("""iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAYAAAA7
+MK6iAAABwUlEQVRIS+1XPYvCQBB9EUH8xEL0DiFY6A/wj1iIhaWdhYWW3p0QEPSuERTsrKwt7PwdNtY
+2yp1i5UckCHrMchs10RAumOMg0yTLzr4382aSZQScrQHg9WL9iNd3ziH8oH8CeHoE0w3MLwDPRNwE8G
+ITKadpEvHJZlJG5xDbproj9f+W2u/3I5VKYTKZ4HA43ExGV+NyuYx2u61zTqfTGI/HOJ30n70kSajX6
++zMbreDz+dTz282G4RCIR3eXWJB4H/T6zNEXCgU0O/32cZ0OkUikQD5d7tdlEolxGIxLJdLRKNRLBYL
+DIdDZLPZKyDLxLlcDoPBAPF4HK1WC/l8nmVImRrZXeJGgy6rs9VqNba4zNjlcrGMIpEIy9jr9UKWZeZ
+HxKPRiAVyy0zXmEuvrTGti8Uier2eip/JZNDpdFgJyOi9UqlYl5pACExr4XAYiqJgv9+rWzxQbc/8qs
+b3iNfrNYLBoNpcvDT0fCixx+PBdruF2+1WMz4ejxBFEfP53Fhqw1Y0uRkIBJBMJjGbzbBarcw1l0lsy
+27O7WRZQrMAjtRmlbLsR1LbMbpoA/340xGGR0MDVdWyhsYANC69kcs3fcfLE6kyui0AAAAASUVORK5C
+YII=""")
+)).save('fps.png', 'PNG')
+
 pathimgy = PhotoImage(file="path.png")
 fpsimgy = PhotoImage(file="fps.png")
 emptyimgy = PhotoImage(file="empty.png")
@@ -218,6 +280,10 @@ txt3.grid(column=2, row=3, pady=(0,30), sticky=E)
 btn1 = Button(window, image=pathimgy, command=destbtn)
 btn1.grid(column=3, row=3, pady=(0,30), padx=(5,0), sticky=W)
 
+#(1, 5) tag
+btn4 = Button(window, text="Sahas Ramesh", fg='#FF4500', anchor=W, highlightbackground='white', highlightcolor='white', highlightthickness=0, command=tagbtn, font=('Courier', 10))
+btn4.grid(column=3, row=5, pady=(10,0), sticky=W)
+
 #new button module for last three buttons
 from tkmacosx import Button
 
@@ -232,7 +298,13 @@ btn2.config(state='disabled')
 
 #(3,4) open button
 btn3 = Button(window, text="Open", disabledbackground='gray', disabledforeground='white', bg="black", fg="white", borderless=1, command=openbtn, font=(fam, n, 'bold'))
-btn3.grid(column=3, row=4, padx=(0,0), sticky=E)
+btn3.grid(column=3, row=4, padx=(0,0), sticky=W)
 btn3.config(state='disabled')
 
+#(1, 5) tag
+tag = Label(window, text="An original project by ", font=('Courier', 10))
+tag.grid(column=2, row=5, pady=(10,0), sticky=E)
+
 window.mainloop()
+
+#pyinstaller --onefile --windowed --add-binary='/System/Library/Frameworks/Tk.framework/Tk':'tk' --add-binary='/System/Library/Frameworks/Tcl.framework/Tcl':'tcl' --icon=logo.ico gifer.py
